@@ -2,7 +2,7 @@
 ##智能井盖微信小程序
 
 登录界面	用户授权按钮，首次登录提示输入用户信息（姓名和手机号）上传到服务器。
-	![image](https://github.com/yup8848/wechatminiprogrem_manholecover/assets/53653523/8deb7e25-de59-4974-bafc-c55f8fe73405)
+ ![image](https://github.com/yup8848/wechatminiprogrem_manholecover/assets/53653523/8deb7e25-de59-4974-bafc-c55f8fe73405)
   
   ![image](https://github.com/yup8848/wechatminiprogrem_manholecover/assets/53653523/eb61365c-6a0e-4179-8790-2c339f336004)
 
