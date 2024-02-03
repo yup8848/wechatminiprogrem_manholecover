@@ -1,0 +1,25 @@
+<!--pages/personalCenter/personalCenter.wxml-->
+<text>pages/personalCenter/personalCenter.wxml</text>
+
+<view class="user-info" >
+  <image class="avatar" src="{{avatarUrl}}" mode="aspectFill"></image>
+  <view class="name-phone">
+  <text class="username">{{username}}</text>
+  <text class="phone">{{phoneNumber}}</text>
+</view>
+</view>
+
+<view class="menu">
+  <navigator class="menu-item" url="/pages/guide/guide">
+  <image class="menu-item-icon" src="/images/GuideIcon.png"></image>
+  <text>新手指引</text>
+  </navigator>
+  <navigator class="menu-item" url="/pages/info/info">
+    <image class="menu-item-icon" src="/images/PersonalIcon.png"></image>
+    <text>个人信息</text>
+    </navigator>
+  <view class="menu-item" bindtap="unbindWechat">
+    <image class="menu-item-icon" src="/images/UnbingWeChat.png"></image>
+    <text>解绑微信</text>
+  </view>
+</view>

@@ -1,0 +1,39 @@
+/* pages/info/info.wxss */
+.user-info {
+  text-align: left;
+  margin-left: 60px;
+  margin-top: 10px;
+  margin-bottom: 12px;
+}
+
+.page-header {
+  /* 样式适应您的需求，这里只是一个示例 */
+  padding: 10px;
+}
+
+.info-row {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.text {
+  margin-right: 10px;
+}
+
+input {
+  border: 1px solid #ccc; /* 设置边框样式 */
+  padding: 5px; /* 设置内边距 */
+  font-size: 14px; /* 设置字体大小 */
+}
+
+.name-input{
+  margin-left: 20px;
+  width: 280px;
+}
+
+.phone-input{
+  margin-left: 3px;
+  width: 280px;
+}

@@ -1,0 +1,15 @@
+<!--pages/userlogininfo/userlogininfo.wxml-->
+<text>pages/userlogininfo/userlogininfo.wxml</text>
+<!-- userlogininfo.wxml -->
+<view class="title" style="color: #2E85E4; font-size: 24px;"> l 用户信息</view>
+<view class="userlogininfo-container">
+  <view class="input-container">
+    <view class="input-label">姓名</view>
+    <input placeholder="请输入真实姓名" bindinput="inputName" />
+  </view>
+  <view class="input-container">
+    <view class="input-label">手机号</view>
+    <input placeholder="请输入真实手机号" bindinput="inputPhoneNumber" />
+  </view>
+  <button bindtap="submitUserInfo">提交信息</button>
+</view>

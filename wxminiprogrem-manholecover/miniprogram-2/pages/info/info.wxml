@@ -1,0 +1,22 @@
+<!--pages/info/info.wxml-->
+<text>pages/info/info.wxml</text>
+
+
+
+<view class="page-header">
+    <!-- 左对齐显示“个人信息” -->
+    <view class="title" style="color: #398be5; font-size: 20px;">I 个人信息</view>
+
+    <view class="info-row">
+        <text>姓名: </text>
+        <input type="text" class="name-input" bindinput="onNameChange" value="{{username}}" />
+    </view>
+    
+    <view class="info-row">
+        <text>手机号: </text>
+        <input type="text" class="phone-input" bindinput="onPhoneNumberChange" value="{{phoneNumber}}" />
+    </view>
+
+    <button  bindtap="saveChanges" style="background-color: #398be5; color: #ffffff;">保存</button>
+
+  </view>

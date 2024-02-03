@@ -1,0 +1,3 @@
+<view class="container">
+  <button bindtap="navigateToDestination">导航到目标位置</button>
+</view>

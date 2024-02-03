@@ -1,0 +1,98 @@
+/* pages/maps/maps.wxss */
+page {
+  height: 90%;
+}
+.map_container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+
+
+
+.user-icon {
+    width: 40px; /* 设为一行文字的高度 */
+    height: 40px; /* 设为一行文字的高度 */
+    margin-right: 6px;
+    margin-left: 3px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+
+input {
+  flex: 1;
+  padding: 5px;
+  margin-right: 1px;
+}
+
+.picker-container {
+  display: flex;
+  align-items: center;
+}
+
+.picker{
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  margin-right: 3px;
+}
+
+.list-msg2{
+  margin-left: 3px;
+  margin-right: 3px;
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+}
+
+.select_one{
+  width: 40px;
+  height: 20px;
+  margin-left: 5px;
+  border: 2px solid rgb(31, 29, 29);
+  padding: 5px;
+  margin: 8px;
+  border-radius: 5px;
+}
+
+.user-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1px;
+}
+
+
+
+.search-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.search-button {
+  padding: 10px;
+  color: #fff;
+  border-radius: 7px;
+  cursor: pointer;
+  margin-left: 4px;
+  width: 60px;
+ text-align: center;
+ font-size: 17px; 
+}
+
+.controls{
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  bottom: 32px; /* 距离底部的距离 */
+  right: 28px; /* 距离右侧的距离 */
+  
+
+}

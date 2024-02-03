@@ -1,0 +1,20 @@
+/* components/nav-bar/nav-bar.wxss */
+.nav-bar {
+  display: flex;
+  height: 100rpx;
+  padding: 0 20rpx;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  align-items: center;
+}
+
+.left {
+  flex: 1;
+  text-align: center;
+}
+
+.right {
+  width: 80rpx;
+  height: 100%;
+  text-align: right;
+}

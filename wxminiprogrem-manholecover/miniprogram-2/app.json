@@ -1,0 +1,74 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/QRcode/QRcode",
+    "pages/home/home",
+    "pages/maps/maps",
+    "pages/personalCenter/personalCenter",
+    "pages/guide/guide",
+    "pages/info/info",
+    "pages/userlogininfo/userlogininfo",
+    "pages/test1/test1"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "window": {
+    "navigationBarTitleText": "站点列表",
+    "navigationBarBackgroundColor": "#398be5",
+    "backgroundColorBottom": "#ffffff",
+    "navigationBarTextStyle": "black" ,
+    "enablePullDownRefresh": false  
+  
+  },
+  "requiredBackgroundModes": ["audio"],
+ 
+  "style": "v2",
+  
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "selectedIconPath": "/images/home_active.png",
+        "iconPath": "/images/home_inactive.png"
+        
+      },
+      {
+        "pagePath": "pages/QRcode/QRcode",
+        "text": "扫码",
+        "custom": true,
+        "iconPath": "/images/QR.png"
+      },
+      {
+        "pagePath": "pages/maps/maps",
+        "text": "地图",
+        "selectedIconPath": "/images/map_active.png",
+        "iconPath": "/images/map_inactive.png"
+      }
+    ]
+  },
+  
+    "networkTimeout": {
+      "downloadFile":3000
+    },
+
+    "requiredPrivateInfos":[
+      "getLocation",
+      "chooseAddress"
+    ] 
+    
+
+    
+  
+
+
+
+
+}

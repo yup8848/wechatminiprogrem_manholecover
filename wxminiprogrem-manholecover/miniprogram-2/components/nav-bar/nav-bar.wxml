@@ -1,0 +1,8 @@
+<!--components/nav-bar/nav-bar.wxml-->
+<text>components/nav-bar/nav-bar.wxml</text>
+<view class="nav-bar">
+    <view class="left">{{title}}</view>
+    <view class="right" bindtap="clickRight">
+        <slot name="right"></slot>
+    </view>
+</view>

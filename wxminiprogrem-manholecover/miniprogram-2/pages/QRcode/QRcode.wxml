@@ -1,0 +1,129 @@
+<!--pages/QRcode/QRcode.wxml-->
+<text>pages/QRcode/QRcode.wxml</text>
+<view class="page-container">
+  <!-- 页面顶部 -->
+  <view class="page-header">
+    <!-- 左对齐显示“设备信息” -->
+    <view class="title" style="color: #398be5; font-size: 20px;">I 设备信息</view>
+
+    <!-- 右边的保存按钮 -->
+    <view class="save-button" bindtap="saveData">
+      保存
+    </view>
+  </view>
+
+  <!-- SN码信息部分 -->
+  <view class="sn-container">
+    <!-- SN码文本 -->
+    <text class="sn-label">SN码</text>
+    <!-- 中间的文本显示框 -->
+    <text class="sn-text">{{ snCodeText }}</text>
+    <!-- 右边的扫码按钮 -->
+    <view class="scan-button" bindtap="onShow">
+      <image src="/images/scan-icon.png" class="scan-icon" />
+    </view>
+  </view>
+
+   <!-- SN码信息部分 -->
+   <view class="fabric-container">
+    <!-- 产品名称 -->
+    <text class="fabric-label">产品名称</text>
+     <!-- 中间的文本显示框 -->
+    <text class="fabric-text">{{ equipmentName }}</text>
+   </view>
+
+
+<!-- --------------------上面是显示，下面是输入--------------------------- -->
+
+    <!-- 页面中部 -->
+    <view class="page-middle">
+    <!-- 左对齐显示“设备信息” -->
+    <view style="color: #527df3;font-weight: bolder; ">———————————————————————</view>
+    <view class="title" style="color: #398be5; font-size: 20px;">I 关联站点</view>
+    </view>
+
+   <!-- 输入站点名称部分 -->
+    <view class="sn-container">
+    <!-- 站点文本 -->
+    <text class="sn-label">站点名称</text>
+    <!-- 中间的站点信息输入框 -->
+    <input class="sn-text" placeholder="请输入站点名称" bindinput="bindSiteNameInput" />
+  </view>
+
+
+    <!-- 输入站点编码部分 -->
+    <view class="sn-container">
+    <!-- 站点文本 -->
+    <text class="sn-label">站点编码</text>
+    <!-- 中间的站点信息输入框 -->
+    <input class="sn-text" placeholder="请输入站点编码" bindinput="bindSiteCodeInput" />
+  </view>
+
+
+
+    <!-- 输入站点图片部分 -->
+    <view class="sn-container">
+    <!-- 站点文本 -->
+    <text class="sn-label">站点图片</text>
+    <!-- 中间的站点信息输入框 -->
+    <!-- 5个icon图标，每个图标绑定一个点击事件 -->
+    <view class="upLoadPhoto">
+    <image class="image-style" src="{{chosenImageSrc[0]}}" bindtap="uploadPhoto" data-index="0"></image>
+    
+    <text style="font-size: 13px;word-wrap:break-word;white-space: pre-wrap;">开箱完整图片</text>
+    </view>
+    <view class="upLoadPhoto">
+    <image  class="image-style" src="{{chosenImageSrc[1]}}" bindtap="uploadPhoto" data-index="1"></image>
+    <text style="font-size: 13px;word-wrap:break-word;white-space: pre-wrap;">安装完成图片</text>
+    </view>
+    <view class="upLoadPhoto">
+    <image  class="image-style" src="{{chosenImageSrc[2]}}" bindtap="uploadPhoto" data-index="2"></image>
+    <text style="font-size: 13px;word-wrap:break-word;white-space: pre-wrap;">地理信息招聘1</text>
+    </view>
+    <view class="upLoadPhoto">
+    <image  class="image-style" src="{{chosenImageSrc[3]}}" bindtap="uploadPhoto" data-index="3"></image>
+    <text style="font-size: 13px;word-wrap:break-word;white-space: pre-wrap;">地理信息招聘2</text>
+    </view>
+    <view class="upLoadPhoto">
+    <image  class="image-style" src="{{chosenImageSrc[4]}}" bindtap="uploadPhoto" 
+    data-index="4"></image>
+    <text style="font-size: 13px;word-wrap:break-word;white-space: pre-wrap;">地理信息招聘3</text>
+    </view>
+    </view>
+
+    <!-- 输入站点地址部分 -->
+
+    <view class="sn-container">
+    <!-- 站点文本 -->
+    <text class="sn-label">地址</text>
+    <!-- 中间的站点信息输入框 -->
+    <input class="sn-text" placeholder="请等待地图定位地址" bindinput="inputLocation" value="{{locationInfo.address}}" disabled />
+    <view class="icon-container" bindtap="onMarkerTap">
+    <!-- 这里放置图标 -->
+    <image class="location-icon" src="/images/getLocation.png" bindtap="onMarkerTap"></image>
+    </view>
+
+  </view>
+
+
+
+    <!-- 输入备注信息部分 -->
+    <view class="sn-container">
+    <!-- 站点文本 -->
+    <text class="sn-label">备注</text>
+    <!-- 中间的站点信息输入框 -->
+    <input class="sn-text" placeholder="请输入备注" bindinput="inputRemarks" />
+  </view>
+
+
+  <!-- 保存按钮 -->
+  <button class="save-button-bottom" bindtap="saveToLocal">保存</button>
+
+
+
+
+
+
+
+
+</view>

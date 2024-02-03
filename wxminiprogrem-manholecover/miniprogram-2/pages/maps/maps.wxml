@@ -1,0 +1,68 @@
+<!--pages/maps/maps.wxml-->
+<text>pages/maps/maps.wxml</text>
+
+
+  <!-- 用户图标、搜索框、复选框放在同一行 -->
+  <view class="user-row">
+    <navigator url="/pages/personalCenter/personalCenter">
+  <view class="user-icon-row">
+    <image class="user-icon" src="/images/personalCenter.png"></image>
+  </view>
+</navigator>
+  <!-- 正常异常筛选下拉框 -->
+    <view class="picker-container">
+      <picker mode="selector" range="{{selectorArray}}" value="{{selectorIndex}}" bindchange="pickerChange">
+        <view class="picker">
+          {{selectorArray[selectorIndex]}}
+        </view>
+      </picker>
+
+
+      
+<!-- 距离筛选下拉框 -->
+<view class="list-msg2" bindtap="bindShowMsg">
+  <text>{{tihuoWay}}</text>
+</view>
+
+
+
+      
+  </view>
+    <!-- 搜索框 -->
+    <input bindinput="inputChange" placeholder="按ID或名称搜索" class="search-input" />
+    <!-- 搜索按钮部分 -->
+    <view bindtap="search" class="search-button" style="background-color: #17ac17;" data-input="{{ inputValue }}">
+      搜索
+    </view>
+  </view>
+
+
+<view class="map_container">
+  <view>
+  <map
+    id="myMap"
+    latitude="{{latitude}}"
+    longitude="{{longitude}}"
+    markers="{{markers}}"
+    bindmarkertap="markerTap"
+    style="width: 100%; height: 1155rpx;"
+    scale="{{mapScale}}"
+    circles="{{circles}}"
+    show-location
+  >
+  <view>请缩放并滑动地图以查看更多站点信息</view>
+  <!-- 下拉需要显示的列表 -->
+  <view class="select_box" wx:if="{{select}}">
+  <view class="select_one" bindtap="mySelect" data-name="1km"> 1 km</view>
+  <view class="select_one" bindtap="mySelect" data-name="3km"> 3 km</view>
+  <view class="select_one" bindtap="mySelect" data-name="5km"> 5 km</view>
+  <view class="select_one" bindtap="mySelect" data-name="10km"> 10km</view>
+  <view class="select_one" bindtap="mySelect" data-name="10+km">10+</view>
+</view>
+
+  <image bindtap="moveToCurrentLocation" class="controls" src="/images/controls.png" ></image>
+  </map>
+</view>
+
+</view>
+    
