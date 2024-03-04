@@ -1,0 +1,272 @@
+/* pages/home/home.wxss */
+
+
+
+.background-image {
+  position: absolute;
+  margin-top: -10px;
+  width: 100%;
+  height: 2%;
+  z-index: -1;
+}
+
+
+
+
+
+.grid-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.grid-item {
+  width: 50%; /* Two columns, each taking 50% width */
+  box-sizing: border-box;
+  padding: 10px; /* Add padding for spacing */
+}
+
+
+
+.marker-info {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd; 
+  margin-bottom: 10px; /* Add margin for spacing between items */
+}
+
+.name {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 5px; /* Add margin between name and info */
+}
+
+.info-column {
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* 添加搜索框样式 */
+.search-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0px; /* 调整间距 */
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border: 1px solid #000000;
+  border-radius: 10px;
+}
+
+.search-input {
+  flex: 1;
+}
+
+.search-button {
+  padding: 10px;
+  color: #fff;
+  border-radius: 7px;
+  cursor: pointer;
+  margin-left: 4px;
+  width: 60px;
+ text-align: center;
+ font-size: 17px; 
+}
+
+.picker-container{
+  margin-left: 10px;
+  font-weight: bolder;
+  background-color: rgb(220, 220, 231);
+  border-radius: 5px;
+ 
+}
+
+
+
+.search_icon{
+  height: 35px;
+  width: 30px;
+}
+
+
+
+
+
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1px;
+  background-color: #f5f5f5;
+}
+
+.left-text {
+  color: #999999; /* 浅灰色 */
+  margin-left: 10px;
+}
+
+.right-container {
+  display: flex;
+  margin-right: 10px;
+}
+
+.right-text {
+  margin-left: 20px;
+  color: #999999; /* 浅灰色 */
+}
+
+.updownchoose{
+  height: 20px;
+  width: 20px;
+}
+
+.nothing{
+  display: flex;
+  margin-top: 100px;
+  margin-left: 70px;
+  width:250px;
+  height: 200px;
+}
+
+
+
+
+.phone_personal{
+  /* width: 100%; */
+  /* color:rgb(34, 154, 181); */
+  /* height:100rpx; */
+  /* line-height:100rpx; */
+ 
+  /* text-align: center; */
+  
+}
+.phone_one{
+    display:flex;
+    position:relative;
+    background-color:rgb(239, 239, 239);
+    /* width:20%; */
+    width: 110rpx;
+    height:42rpx;
+    border-radius:10rpx;
+    border-bottom:2rpx solid rgb(255, 255, 255);
+    margin-left: 12rpx;
+    /* line-height:51px; */
+}
+
+.person_box{
+  position: relative;
+  
+}
+.phone_select{
+  margin-top:48rpx;
+
+  z-index: 100;
+  width:100%;
+  position: absolute;
+  background-color:rgb(252, 251, 251);
+  /* border-bottom:2rpx solid rgb(255, 255, 255); */
+}
+
+.select_one_text.selected {
+  color: #398be5; 
+}
+
+.select_one_text_right.selected {
+  color: #398be5; 
+}
+
+.select_one_text_right{
+  
+  margin-left: 280px;
+  width:20rpx;
+  color: #fff;
+ 
+
+
+}
+
+.select_one{
+  text-align: left;
+  /* background-color:rgb(239, 239, 239); */
+  width:720rpx;
+  height:80rpx;
+  line-height:100rpx;
+  margin-left: -65px;
+  background-color:rgb(255, 255, 255);
+  border-bottom:1px solid rgb(224, 220, 220);
+  
+}
+
+
+
+.select_one_text{
+  margin-left: 20rpx;
+}
+
+.personal_image{
+  z-index: 100;
+  position: absolute;
+  right:5.5%;
+  width: 40rpx;
+  height: 38rpx;
+  position: absolute;
+  top:8%; /* 竖直方向居中 */
+  /* margin:40rpx 20rpx 40rpx 0; */
+  transition: All 0.4s ease; 
+  -webkit-transition: All 0.4s ease;
+}
+.rotateRight{
+  transform: rotate(180deg);
+}
+
+.distance-container {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  /* background-color:rgb(239, 239, 239); */
+  width:700rpx;
+  height:80rpx;
+  line-height:100rpx;
+  margin-left: -55px;
+  background-color:rgb(255, 255, 255);
+  border-bottom:1px solid rgb(224, 220, 220);
+}
+
+.distance-input {
+  flex: width;
+  width: 160px;
+  margin: 0 5px;
+  background-color: #f0f0f0; 
+  border: none; 
+  padding: 5px; 
+  margin-right: 15px;
+}
+
+.distance-button {
+ margin-left: 15px;
+ height: 70rpx;
+ width: 45px;
+ text-align: center;
+ color: #fff;
+ border-radius: 7px;
+ line-height: 70rpx;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,19 @@
+{
+ 
+"navigationBarTitleText": "站点列表",
+"navigationBarBackgroundColor": "#398be5",
+"navigationBarTextStyle": "black",
+"navigationStyle": "custom", 
+"usingComponents": {
+    "custom-navigation": "/components/custom-navigation/custom-navigation"
+}
+
+
+
+
+
+  }
+ 
+
+  
+

@@ -1,0 +1,34 @@
+/* components/custom-navigation/custom-navigation.wxss */
+/* components/custom-navigation/custom-navigation.wxss */
+
+.custom-nav-container {
+  display: flex;
+  align-items:center;
+  height: 84px;
+  background-color: #398be5; /* 导航栏背景颜色 */
+  border-bottom: 1px solid #398be5; /* 导航栏底部边框线 */
+
+}
+
+.custom-nav-left {
+  flex: 1;
+  padding: 0 15px;
+  font-size: 16px;
+  color: #ffffff; /* 导航栏左侧按钮颜色 */
+  text-align: left;
+  margin-top: 42px;
+}
+
+.custom-nav-center {
+  flex: 1;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 42px;
+}
+
+.custom-nav-right {
+  flex: 1;
+  padding: 0 15px;
+  text-align: right;
+}

@@ -1,0 +1,384 @@
+// pages/home/home.js
+var showModalOnHomeLoad=false
+const app = getApp();
+
+Page({
+
+  // 自定义导航栏左侧按钮点击事件处理
+  onCustomNavLeftBtnClick() {
+    // 在这里调用 showModalForNewProject 函数或其他逻辑
+    this.showModalForNewProjectButton();
+  },
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    markers: [], 
+    fullData:[], // 保存完整数据集信息
+    filteredData: [], // 保存筛选后的数据
+    inputValue: '' ,// 用于保存输入框的值
+    selectorArray: ['正常', '异常'],
+    selectorIndex: 0,// 默认选择第一个（正常）
+    projectName:null,
+    //下拉菜单选择
+    selectPerson:true,
+    firstPerson:'全部',
+    selectArea:false,
+
+  }, 
+
+  //点击选择类型
+  clickPerson:function(){
+    var selectPerson = this.data.selectPerson;
+    if(selectPerson == true){
+        this.setData({
+        selectArea:true,
+        selectPerson:false,
+      })
+    }else{
+      this.setData({
+        selectArea:false,
+        selectPerson:true,
+      })
+    }
+  } ,
+  //点击切换
+  mySelect:function(e){
+    this.setData({
+      firstPerson:e.target.dataset.me,
+      selectPerson:true,
+      selectArea:false,
+    })
+  },
+
+//pickerChange 函数监听下拉框选择的变化
+pickerChange: function (e) {
+  this.setData({
+    selectorIndex: e.detail.value,
+  });
+  console.log("正常0，异常1：当前结果是",this.data.selectorIndex)
+  //模拟异常数据id为偶数的为异常，进行筛选
+  if (this.data.selectorIndex==1) {
+    const filteredData = this.data.markers.data.filter(item => {
+      // id偶数是异常
+      if(item.id%2==0) 
+      {return  item.id}
+    });
+    console.log(filteredData)
+    this.setData({
+      filteredData: filteredData,
+    });
+  }
+    //模拟异常数据id为奇数的为正常，进行筛选
+  if (this.data.selectorIndex==0) {
+      const filteredData = this.data.markers.data.filter(item => {
+        // id偶数是异常
+        if(item.id%2!==0) 
+        {return  item.id}
+      });
+      console.log(filteredData)
+      this.setData({
+        filteredData: filteredData,
+      });
+  }
+},
+
+//输入框输入完成后传数据给search函数
+inputChange: function(e) {
+  this.setData({
+    inputValue: e.detail.value
+  });
+},
+
+// 输入框内容变化时触发的搜索函数
+search: function() {
+  const searchText = this.data.inputValue; // 获取输入框的值并转换为小写
+  const filteredData = this.data.markers.data.filter(item => {
+    // 根据ID或名称进行筛选
+    return (
+      item.id.toString().includes(searchText) ||
+      item.name.includes(searchText)
+    );
+  });
+if (filteredData.length > 0) {
+this.setData({
+  filteredData: filteredData,
+});
+} else {
+console.log('未找到匹配的站点数据信息');
+wx.showToast({
+  title: '未找到匹配站点',
+  icon:'error',
+  duration: 2000
+})
+}
+
+},
+ 
+  /**
+   * 生命周期函数--监听页面加载
+   */
+onLoad:function(options) {
+
+// 定义请求地址
+const apiUrl = app.globalData.baseUrl + '/sysPosition/list';
+// 发起GET请求
+wx.request({
+  url: apiUrl,
+  method: 'GET',
+  success: (res) => {
+    // 请求成功的回调函数
+    // 在这里处理从服务器获取到的数据
+    console.log('定位服务请求成功', res);
+    //服务器请求的设备数据，用在home界面上显示
+    this.setData({
+      markers: res.data,
+      //这里可以给初始化filteredData，使得home页面一加载就可以全部显示
+      filteredData:res.data.data
+
+    });
+    // 假设服务器返回的数据是一个包含多个经纬度的数组
+    const positions = res.data;
+    // 将数据存储到本地
+    wx.setStorageSync('mapPositions', positions);
+    const storedPositions = wx.getStorageSync('mapPositions');
+    if (storedPositions && storedPositions.data.length > 0) {
+      const firstPosition = storedPositions.data[0];
+      console.log('第一条地理位置数据:', firstPosition);
+      // 假设服务器返回的数据包含经纬度信息：
+      const latitude = firstPosition.lat;
+      console.log('第一条地理位置latitude数据:', latitude);
+      const longitude = firstPosition.lng;
+      console.log('第一条地理位置longitude数据:', longitude);
+
+    } else {
+      console.log('本地暂无存储的地理位置数据或数组为空');
+    }
+    // 在这里可以将经纬度信息用于地图显示等操作
+  },
+  fail: function(err) {
+    // 请求失败的回调函数
+    console.error('请求失败', err);
+  }
+});
+
+  // 在页面加载时检查是否需要弹窗输入项目名称新建项目
+  this.checkAndShowModalForNewProject();
+},
+
+// 判断是否需要弹窗输入项目名称新建项目
+checkAndShowModalForNewProject() {
+  const existingProjects = wx.getStorageSync('projects') || [];
+// 如果没有项目，或者当前项目为空，则弹窗新建项目
+  if (existingProjects.length === 0 || !app.globalData.currentProject) {
+    this.showModalForNewProject();
+  }
+},
+
+// 初次弹窗输入项目名称新建项目
+showModalForNewProject() {
+if (!showModalOnHomeLoad) {
+    // 设置状态标记为 false，确保下次不再显示
+    showModalOnHomeLoad=true;
+    wx.showModal({
+      title: '当前无项目，请新建一个项目',
+      // 添加输入框
+      showCancel: true,
+      confirmText: '确定',
+      cancelText: '取消',
+      confirmColor: '#2E85E4',
+      cancelColor: '#999',
+      input:true,
+      editable:true,
+      placeholderText:'请输入项目名称',
+      success: function (res) {
+        if (res.confirm) {
+          // 用户点击确认按钮后执行的操作
+          const projectName = res.content;
+          console.log("初次进入home界面新建项目名称projectName：",projectName)
+          let userId = getApp().globalData.userId;
+          wx.request({
+            url: app.globalData.baseUrl + '/iot/welllid/newProject',
+            method: 'POST',
+            header: {
+              'content-type': 'application/x-www-form-urlencoded',   
+            },
+            data:{
+              projectName:projectName,
+              userId:userId,
+            },
+            success: (res) => {
+              console.log('新建项目_POST请求成功:', res);
+
+            },
+            fail: (res) => {
+              console.error('POST请求失败:', res);
+              wx.showToast({
+                title: '信息提交失败，请重试',
+                icon: 'none',
+              });
+            },
+          }); 
+
+
+        if (projectName) {
+          app.createProject(projectName);
+          wx.showToast({
+            title: '新建项目成功',
+            icon: 'success',
+            duration: 2000,
+          });               
+        }
+          // 可以在这里添加进入 home 界面的逻辑
+          console.log('用户点击了home界面弹窗的确认, if (res.confirm)内部被执行 ');
+            /*此处可以添加页面弹框新建项目的数据，需要在app.js中addDataToCurrentProject函数的newData修改数据的key与value的值*/
+          const mapcachedData = wx.getStorageSync('mapPositions');
+          // let userId = app.globalData.userId;
+          // 将缓存的数据添加到当前项目的dataCollection中               
+          // app.addDataToCurrentProject(mapcachedData) ;
+          
+          // 清空缓存的数据，避免重复加载
+          // wx.setStorageSync('requestData_userlogininfo', []);
+    
+        }
+      },
+    });
+}
+else {
+  wx.showToast({
+    title: '项目名称不能为空',
+    icon: 'none',
+    duration: 2000,
+  });
+}
+},
+
+//点击导航栏按钮实现弹窗输入项目名称新建项目
+showModalForNewProjectButton() {
+  wx.showModal({
+    title: '当前无项目，请新建一个项目',
+    // 添加输入框
+    showCancel: true,
+    confirmText: '确定',
+    cancelText: '取消',
+    confirmColor: '#2E85E4',
+    cancelColor: '#999',
+    input:true,
+    editable:true,
+    placeholderText:'请输入项目名称',
+    success: function (res) {
+      if (res.confirm) {
+        // 用户点击确认按钮后执行的操作
+        const projectName = res.content;
+        console.log("home界面导航栏按钮进入新建项目名称projectName：",projectName)
+      if (projectName) {
+        app.createProject(projectName);
+        wx.showToast({
+          title: '新建项目成功',
+          icon: 'success',
+          duration: 2000,
+        });               
+      }
+        // 可以在这里添加进入 home 界面的逻辑
+        console.log('用户点击了home界面弹窗的确认, if (res.confirm)内部被执行 ');
+          /*此处可以添加页面弹框新建项目的数据，需要在app.js中addDataToCurrentProject函数的newData修改数据的key与value的值*/
+        const mapcachedData = wx.getStorageSync('mapPositions');
+        // 将缓存的数据添加到当前项目的dataCollection中               
+        // app.addDataToCurrentProject(mapcachedData) ;
+
+        // 清空缓存的数据，避免重复加载
+        // wx.setStorageSync('requestData_userlogininfo', []);
+  
+      }
+    },
+  });
+  },
+
+//点击站点文本框可以显示该站点全部信息
+showFullData:function(event) {
+  const index = event.currentTarget.dataset.index;
+  // 定义请求地址
+  const apiUrl = app.globalData.baseUrl + '/sysPosition/list';
+
+  wx.request({
+    url: apiUrl,
+    method: 'GET',
+    success: (res) => {
+      const fullData = res.data.data;
+      // 使用 forEach 迭代数组
+      fullData.forEach((obj, index) => {
+      // 在这里，'obj' 是当前对象，'index' 是当前对象的索引值
+    //  console.log(`索引 ${index}:`, obj);
+      });
+      
+      console.log("index:",index)
+      const contentString = JSON.stringify(fullData[index])
+      console.log(`index ${index}'s contentString:`, contentString);
+      this.setData({
+        fullData: fullData,
+      });
+      // 更新文本框内容为完整数据集信息
+      wx.showModal({
+        title: '站点的详细数据信息',
+        content: contentString,
+        showCancel: false,
+      });
+    },
+    fail: (error) => {
+      console.error('获取数据失败', error);
+    },
+  });
+},
+
+
+   
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady(){
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow() {
+
+  },
+
+  
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide() {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload() {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh() {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom() {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage() {
+
+  }
+})

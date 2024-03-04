@@ -1,0 +1,96 @@
+<!--pages/maps/maps.wxml-->
+  <!-- 用户图标、搜索框、复选框放在同一行 -->
+  <view class="user-row">
+    <navigator url="/pages/personalCenter/personalCenter">
+  <view class="user-icon-row">
+    <image class="user-icon" src="/images/personalCenter.png"></image>
+  </view>
+    </navigator>
+  <!-- 正常异常筛选下拉框 -->
+    <!-- <view class="picker-container"> -->
+      <!-- <picker mode="selector" range="{{selectorArray}}" value="{{selectorIndex}}" bindchange="pickerChange">
+        <view class="picker">
+          {{selectorArray[selectorIndex]}}
+        </view>
+      </picker> -->
+
+<!-- 距离筛选下拉框 -->
+<!-- <view class="list-msg2" bindtap="bindShowMsg">
+  <text>{{tihuoWay}}</text>
+</view> -->
+
+<!-- </view> -->
+
+
+
+
+        <!-- 下拉菜单框 -->
+        <view class="phone_one" bindtap="clickPerson">
+    <view class="phone_personal">{{firstPerson}}</view>
+    <image src="/images/上下选择.png" class="personal_image {{selectArea ? 'rotateRight' :''}}"></image>
+        </view>
+        <view class="person_box">
+            <view class="phone_select" hidden="{{selectPerson}}">
+                <view class="select_one" bindtap="mySelect" data-me="异常">
+                  <text class="select_one_text {{firstPerson === '异常' ? 'selected' : ''}}">异常</text>
+                  <text class="select_one_text_right {{firstPerson === '异常' ? 'selected' : ''}}">✓</text>
+                </view>
+                <view class="select_one" bindtap="mySelect" data-me="正常">
+                  <text class="select_one_text {{firstPerson === '正常' ? 'selected' : ''}}">正常</text>
+                  <text class="select_one_text_right {{firstPerson === '正常' ? 'selected' : ''}}">✓</text>
+                </view>
+                <view class="distance-container">
+                <text>附近站点：</text> 
+                <input bindinput="inputChange" placeholder="请输入距离" class="distance-input" />
+                <text>M</text>
+                <view bindtap="search" class="distance-button" style="background-color: #17ac17;" data-input="{{ inputValue }}">
+              搜索
+            </view>
+
+                </view>
+            </view>
+        </view>
+
+    <!-- 搜索框 -->
+    <view class="research_area"> 
+    <image class="search_icon" src="/images/search.png"></image>
+    <input bindinput="inputChange" placeholder="按站点名称搜索" class="search-input" />
+  </view>
+    <!-- 搜索按钮部分 -->
+    <view bindtap="search" class="search-button" style="background-color: #17ac17;" data-input="{{ inputValue }}">
+      搜索
+    </view>
+  </view>
+
+
+
+<view class="map_container">
+  <view>
+  <map
+    id="myMap"
+    latitude="{{latitude}}"
+    longitude="{{longitude}}"
+    markers="{{markers}}"
+    bindmarkertap="markerTap"
+    style="width: 100%; height: 1185rpx;"
+    scale="{{mapScale}}"
+    circles="{{circles}}"
+    show-location
+  >
+  <view>请缩放并滑动地图以查看更多站点信息</view>
+  <!-- 下拉需要显示的列表 -->
+  <view class="select_box" wx:if="{{select}}">
+  <view class="select_one" bindtap="mySelect" data-name="1km"> 1 km</view>
+  <view class="select_one" bindtap="mySelect" data-name="3km"> 3 km</view>
+  <view class="select_one" bindtap="mySelect" data-name="5km"> 5 km</view>
+  <view class="select_one" bindtap="mySelect" data-name="10km"> 10km</view>
+  <view class="select_one" bindtap="mySelect" data-name="10+km">10+</view>
+</view>
+
+  <image bindtap="moveToCurrentLocation" class="controls" src="/images/controls.png" ></image>
+  
+  </map>
+</view>
+
+</view>
+    

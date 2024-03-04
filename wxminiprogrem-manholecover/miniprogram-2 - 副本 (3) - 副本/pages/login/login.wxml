@@ -1,0 +1,12 @@
+<!--pages/login/login.wxml-->
+
+
+<!-- login.wxml -->
+<view class="login-container">
+  <image class="background-image" src="/images/window_background.png"></image>
+  <text class="logo-text">设备安装信息采集</text>
+  <text class="permission-text">授权登录小程序将获得以下权限</text>
+  <text class="permission-tip-text">· 获得你的公开信息（昵称、头像）</text>
+  <button  bindtap="handleLogin" class="login-button" >授权登录</button>
+</view>
+

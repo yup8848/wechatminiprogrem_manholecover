@@ -1,0 +1,69 @@
+/* pages/login/login.wxss */
+
+/* login.wxss */
+.login-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0; /* 重置页面的默认边距 */
+  padding: 0; /* 重置页面的默认内边距 */
+  overflow: hidden; /* 隐藏可能导致滚动的溢出内容 */
+}
+
+
+
+
+.background-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  /* left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); */
+}
+
+
+.permission-text {
+  display: flex;
+  margin-top: 50px; 
+  margin-bottom: 6px;
+  font-size: 16px; 
+  color: #555;
+  font-weight: bold; 
+  margin-left: -80px; 
+ 
+}
+
+.permission-tip-text{
+  font-size: 14px; 
+  color: rgb(131, 131, 131);
+  margin-left: -80px; 
+  margin-bottom: 20px;
+
+}
+
+.logo-text{
+  position: absolute;
+  top: 365rpx; /* 距离顶部的距离 */
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color:#555;
+  font-weight: bold; 
+  font-size: 14px;
+}
+
+.login-button {
+  width: 400rpx;
+  height: 80rpx;
+  background-color: #3cc441;
+  color: #fff;
+  border: none;
+  border-radius: 10rpx;
+  font-size: 32rpx;
+  margin-top: 45rpx;
+}

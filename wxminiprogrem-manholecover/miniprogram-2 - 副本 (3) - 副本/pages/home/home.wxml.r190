@@ -1,0 +1,35 @@
+<!--pages/home/home.wxml-->
+<text>pages/home/home.wxml</text>
+
+
+<custom-navigation title="站点列表" bind:customNavLeftBtnClick="onCustomNavLeftBtnClick" />
+
+<view class="search-container">
+  <!-- 长输入框部分 -->
+  <input bindinput="search" placeholder="按ID或名称搜索" class="search-input" />
+  <!-- 搜索按钮部分 -->
+  <view bindtap="search" class="search-button" style="background-color: #17ac17;">
+    搜索
+  </view>
+</view>
+
+
+
+
+
+
+<view class="grid-container">
+  <image class="background-image" src="/images/page_background.png"></image>
+  
+  <!-- 显示接收服务器的设备数据集合，设备名称，位置，水位，报警信息等，遍历数据集，每条数据单独显示出来 -->
+  <view wx:for="{{ filteredData }}" wx:key="index" class="grid-item">
+    <!-- 显示每个单独设备的信息 -->
+    <view bindtap="showFullData" data-index="{{index}}" class="marker-info">
+      <text>ID: {{ item.id }}</text>
+      <text>名称：{{ item.name }}</text>
+      <text>Latitude: {{ item.lat }}</text>
+      <text>Longitude: {{ item.lng }}</text>
+    </view>
+  </view>
+</view>
+

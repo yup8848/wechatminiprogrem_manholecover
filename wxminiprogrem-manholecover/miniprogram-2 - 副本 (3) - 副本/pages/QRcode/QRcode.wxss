@@ -1,0 +1,118 @@
+/* pages/QRcode/QRcode.wxss#398be5; */
+
+
+/* 样式表中设置页面和元素的样式 */
+
+
+.page-container {
+  padding: 20rpx;
+  height: 80vh;
+  overflow: hidden; 
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  margin-top: 2rpx;
+}
+
+.save-button {
+  color: #ffffff;
+  font-size: 16px;
+  background-color:#007AFF;
+  border-radius: 3px;
+  padding: 2px;
+  
+  
+}
+
+.sn-container {
+  display: flex;
+  align-items: center;
+  margin-top: 30rpx;
+}
+
+.fabric-container{
+  margin-top: 30rpx;
+}
+
+.sn-label {
+  margin-right: 20rpx;
+  font-size: 17px;
+}
+
+.fabric-label {
+  margin-right: 20rpx;
+  font-size: 17px;
+  margin-top: 100px;
+}
+
+
+.sn-text {
+  flex: 1;
+  border: 1rpx solid #ccc;
+  padding: 18rpx;
+}
+
+.fabric-text{
+  flex: 1;
+  padding: 18rpx;
+  
+}
+
+.scan-button {
+  margin-left: 20rpx;
+}
+
+.scan-icon {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.save-button-bottom {
+  display: flex;
+  align-items: center; /* 垂直方向居中 */
+  justify-content: center; /* 水平方向居中 */
+  height: 38px; /* 设置按钮高度，根据需要调整 */
+  width: 200px;
+  background-color: #007AFF; /* 设置按钮背景颜色 */
+  color: #ffffff; /* 设置按钮文字颜色 */
+  text-align: center;
+  position: fixed;
+  bottom: 48px; /* 距离底部的距离，根据需要调整 */
+  left: 25%; /* 距离左侧的距离，根据需要调整 */
+  border-radius: 5px; /* 设置按钮圆角 */
+}
+
+.save-button-contain{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* 或者设置容器高度 */
+}
+
+.upLoadPhoto{
+  display: flex;
+  flex-direction: column;
+
+}
+
+.image-style {
+  width: 60px; /* 设置图片宽度 */
+  height: 60px; /* 设置图片高度 */
+  /* 还可以添加其他样式属性，如margin、padding等 */
+}
+
+.icon-container{
+  display: flex;
+  flex-direction: row;
+}
+
+.location-icon{
+  width: 40px; /* 设置图片宽度 */
+  height: 40px; /* 设置图片高度 */
+}

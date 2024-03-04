@@ -1,0 +1,18 @@
+<!--components/custom-navigation/custom-navigation.wxml-->
+
+
+<view class="custom-nav-container">
+  <view class="custom-nav-left" bindtap="onCustomNavLeftBtnClick">
+    <!-- 这里可以放左侧按钮的图标等 -->
+    <text>新建项目</text>
+  </view>
+  <view class="custom-nav-center">
+    <!-- 这里放中间的标题等 -->
+    <text>{{ title }}</text>
+  </view>
+  <view class="custom-nav-right">
+    <!-- 这里放右侧按钮的图标等 -->
+  </view>
+</view>
+
+

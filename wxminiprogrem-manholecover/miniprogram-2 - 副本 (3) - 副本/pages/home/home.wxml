@@ -1,0 +1,96 @@
+<!--pages/home/home.wxml-->
+<custom-navigation title="站点列表" bind:customNavLeftBtnClick="onCustomNavLeftBtnClick" />
+<view class="page-container">
+  <image class="background-image" src="/images/page_background.png"></image>
+  <view class="search-container">
+    <!-- 页面滚动选择器 -->
+    <!-- <view class="picker-container">
+        <picker mode="selector" range="{{selectorArray}}" value="{{selectorIndex}}" bindchange="pickerChange">
+          <view class="picker">
+            {{selectorArray[selectorIndex]}}
+          </view>
+        </picker>
+    </view> -->
+
+    
+    <!-- 下拉菜单框 -->
+    <view class="phone_one" bindtap="clickPerson">
+    <view class="phone_personal">{{firstPerson}}</view>
+    <image src="/images/上下选择.png" class="personal_image {{selectArea ? 'rotateRight' :''}}"></image>
+</view>
+<view class="person_box">
+    <view class="phone_select" hidden="{{selectPerson}}">
+        <view class="select_one" bindtap="mySelect" data-me="全部">
+          <text class="select_one_text {{firstPerson === '全部' ? 'selected' : ''}}">全部</text>
+          <text class="select_one_text_right {{firstPerson === '全部' ? 'selected' : ''}}">✓</text>
+        </view>
+        <view class="select_one" bindtap="mySelect" data-me="告警">
+          <text class="select_one_text {{firstPerson === '告警' ? 'selected' : ''}}">告警</text>
+          <text class="select_one_text_right {{firstPerson === '告警' ? 'selected' : ''}}">✓</text>
+        </view>
+        <view class="select_one" bindtap="mySelect" data-me="离线">
+          <text class="select_one_text {{firstPerson === '离线' ? 'selected' : ''}}">离线</text>
+          <text class="select_one_text_right {{firstPerson === '离线' ? 'selected' : ''}}">✓</text>
+        </view>
+        <view class="select_one" bindtap="mySelect" data-me="正常">
+          <text class="select_one_text {{firstPerson === '正常' ? 'selected' : ''}}">正常</text>
+          <text class="select_one_text_right {{firstPerson === '正常' ? 'selected' : ''}}">✓</text>
+        </view>
+        <view class="distance-container">
+        <text>附近站点：</text> 
+        <input bindinput="inputChange" placeholder="请输入距离" class="distance-input" />
+        <text>M</text>
+        <view bindtap="search" class="distance-button" style="background-color: #17ac17;" data-input="{{ inputValue }}">
+      搜索
+    </view>
+
+        </view>
+    </view>
+ </view>
+    
+
+
+
+
+
+
+    <image class="search_icon" src="/images/search.png"></image>
+    <!-- 长输入框部分 -->
+    <input bindinput="inputChange" placeholder="编码、名称、地址" class="search-input" />
+    <!-- 搜索按钮部分 -->
+    <view bindtap="search" class="search-button" style="background-color: #17ac17;" data-input="{{ inputValue }}">
+      搜索
+    </view>
+  </view>
+
+  <view class="grid-container">
+    <!-- 显示接收服务器的设备数据集合，设备名称，位置，水位，报警信息等，遍历数据集，每条数据单独显示出来 -->
+    <view wx:for="{{ filteredData }}" wx:key="index" class="grid-item">
+      <!-- 显示每个单独设备的信息 -->
+      <view bindtap="showFullData" data-index="{{index}}" class="marker-info">
+        <text>ID: {{ item.id }}</text>
+        <text>名称：{{ item.name }}</text>
+        <text>Latitude: {{ item.lat }}</text>
+        <text>Longitude: {{ item.lng }}</text>
+      </view>
+    </view>
+  </view>
+
+<!-- 站点列表表头 -->
+<view class="header">
+  <text class="left-text">共0个站点</text>
+  <view class="right-container">
+    <text class="right-text">设备同步</text>
+    <text class="right-text">安装时间</text>
+    <image class="updownchoose" src="/images/上下选择.png"></image>
+  </view>
+</view>
+
+<!-- 空空如也 -->
+<view>
+<image class="nothing" src="/images/nothing.png"></image>
+</view>
+
+
+</view>
+
