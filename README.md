@@ -1,5 +1,5 @@
 # wechatminiprogrem_manholecover
-##智能井盖微信小程序
+##微信小程序
 
  ![image](https://github.com/yup8848/wechatminiprogrem_manholecover/assets/53653523/8deb7e25-de59-4974-bafc-c55f8fe73405)
   
